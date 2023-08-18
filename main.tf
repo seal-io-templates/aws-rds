@@ -230,11 +230,11 @@ locals {
 #
 
 locals {
-  seal_metadata_project_name     = coalesce(var.seal_metadata_project_name, "example")
-  seal_metadata_environment_name = coalesce(var.seal_metadata_environment_name, "example")
-  seal_metadata_service_name     = coalesce(var.seal_metadata_service_name, "awsrds")
+  walrus_metadata_project_name     = coalesce(var.walrus_metadata_project_name, "example")
+  walrus_metadata_environment_name = coalesce(var.walrus_metadata_environment_name, "example")
+  walrus_metadata_service_name     = coalesce(var.walrus_metadata_service_name, "awsrds")
 
-  identifier = join("-", [local.seal_metadata_project_name, local.seal_metadata_environment_name, local.seal_metadata_service_name])
+  identifier = join("-", [local.walrus_metadata_project_name, local.walrus_metadata_environment_name, local.walrus_metadata_service_name])
 }
 
 locals {
@@ -253,9 +253,9 @@ locals {
   sql_init            = var.init_sql_url != ""
   publicly_accessible = var.publicly_accessible || local.sql_init
   tags = {
-    "seal_project"     = local.seal_metadata_project_name
-    "seal_environment" = local.seal_metadata_environment_name
-    "seal_service"     = local.seal_metadata_service_name
+    "walrus_project"     = local.walrus_metadata_project_name
+    "walrus_environment" = local.walrus_metadata_environment_name
+    "walrus_service"     = local.walrus_metadata_service_name
   }
   instance_type   = coalesce(var.instance_type, lookup(local.engineInfo, "instanceType"))
   storage_type    = coalesce(var.storage_type, "gp2")
