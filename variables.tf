@@ -121,22 +121,22 @@ variable "vpc_id" {
 ###########################
 
 # @hidden
-variable "seal_metadata_project_name" {
+variable "walrus_metadata_project_name" {
   type        = string
-  description = "Seal metadata project name."
+  description = "Walrus metadata project name."
   default     = ""
 }
 
 # @hidden
-variable "seal_metadata_environment_name" {
+variable "walrus_metadata_environment_name" {
   type        = string
-  description = "Seal metadata environment name."
+  description = "Walrus metadata environment name."
   default     = ""
 }
 
 # @hidden
-variable "seal_metadata_service_name" {
+variable "walrus_metadata_service_name" {
   type        = string
-  description = "Seal metadata service name."
+  description = "Walrus metadata service name."
   default     = ""
 }
