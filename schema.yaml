@@ -4,11 +4,11 @@ info:
 components:
   schemas:
     variables:
-      type: object
       required:
       - architecture
       - engine
       - password
+      type: object
       properties:
         engine:
           title: Engine
@@ -41,80 +41,84 @@ components:
           title: Password
           type: string
           description: Specify the root password to initialize after launching.
-          writeOnly: true
           format: password
+          writeOnly: true
           x-walrus-ui:
             group: Basic
         username:
           title: Username
           type: string
-          default: rdsusr
           description: Specify the root username to initialize after launching.
+          default: rdsusr
           x-walrus-ui:
             group: Basic
         database:
           title: Database
           type: string
-          default: rdsdb
           description: Specify the database name to initialize after launching.
+          default: rdsdb
           x-walrus-ui:
             group: Basic
         instance_type:
           title: Instance Type
           type: string
-          default: ''
           description: Specify the instance type to deploy the RDS engine, pick burstable
             2C4G type automatically if empty.
+          default: ""
           x-walrus-ui:
             group: Advanced
         storage_type:
           title: Storage Type
           type: string
-          default: ''
           description: Specify the storage type to deploy the RDS engine, pick GP2
             if empty.
+          default: ""
           x-walrus-ui:
             group: Advanced
         init_sql_url:
           title: Init SQL URL
           type: string
-          default: ''
           description: Specify the init SQL download URL to initialize after launching.
+          default: ""
           x-walrus-ui:
             group: Advanced
         publicly_accessible:
           title: Publicly Accessible
           type: boolean
-          default: false
           description: Specify to allow publicly accessing.
+          default: false
           x-walrus-ui:
             group: Advanced
         vpc_id:
           title: VPC ID
           type: string
-          default: ''
           description: Specify the existing VPC ID to deploy, create a new one if
             empty.
+          default: ""
           x-walrus-ui:
             group: Advanced
-        walrus_metadata_environment_name:
-          title: walrus_metadata_environment_name
-          type: string
-          default: ''
-          description: Walrus metadata environment name.
+        context:
+          title: Context
+          type: object
+          description: |
+            Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.
+
+            Examples:
+            ```
+            context:
+              project:
+                name: string
+                id: string
+              environment:
+                name: string
+                id: string
+              resource:
+                name: string
+                id: string
+            ```
+          default: {}
+          additionalProperties:
+            type: object
           x-walrus-ui:
-            hidden: true
-        walrus_metadata_project_name:
-          title: walrus_metadata_project_name
-          type: string
-          default: ''
-          description: Walrus metadata project name.
-          x-walrus-ui:
-            hidden: true
-        walrus_metadata_service_name:
-          title: walrus_metadata_service_name
-          type: string
-          default: ''
-          description: Walrus metadata service name.
-          x-walrus-ui:
+            group: Basic
             hidden: true
